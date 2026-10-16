@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const feeView = document.getElementById('feeView');
   const homeBtn = document.getElementById('homeBtn');
   const navDashboard = document.getElementById('navDashboard');
+  const navAcademic = document.getElementById('navAcademic');
   const navTimetable = document.getElementById('navTimetable');
   const navFee = document.getElementById('navFee');
   const brandLogoLink = document.getElementById('brandLogoLink');
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hideAllViews();
     if (dashboardView) dashboardView.style.display = 'flex';
     if (navDashboard) navDashboard.classList.add('active');
+    if (navAcademic) navAcademic.classList.add('active');
     if (pushHistory) {
       history.pushState({ view: 'dashboard' }, '', '#dashboard');
     }
@@ -129,6 +131,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Dashboard Nav Click
   if (navDashboard) {
     navDashboard.addEventListener('click', (e) => {
+      e.preventDefault();
+      showDashboardView(true);
+    });
+  }
+
+  // Academic Nav Click -> Opens Dashboard View directly
+  if (navAcademic) {
+    navAcademic.addEventListener('click', (e) => {
       e.preventDefault();
       showDashboardView(true);
     });
@@ -239,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Other Navigation items click
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      if (item === navDashboard || item === navTimetable || item === navFee) return; // Handled separately
+      if (item === navDashboard || item === navAcademic || item === navTimetable || item === navFee) return; // Handled separately
       e.preventDefault();
       closeMobileSidebar();
       navItems.forEach(n => n.classList.remove('active'));
@@ -263,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Check initial URL hash
-  if (window.location.hash === '#dashboard') {
+  if (window.location.hash === '#dashboard' || window.location.hash === '#academic') {
     showDashboardView(false);
   } else if (window.location.hash === '#timetable') {
     showTimetableView(false);
