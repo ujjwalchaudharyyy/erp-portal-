@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyborg ERP - Student Portal | Graphic Era Hill University</title>
+  <link rel="icon" type="image/png" href="assets/logo_clean.png">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+    <!-- Brand Header -->
+    <div class="sidebar-header">
+      <a href="#" id="brandLogoLink" class="sidebar-brand" title="Home Overview">
+        <img src="assets/cyborg_logo.png" alt="Cyborg ERP" class="brand-icon">
+        <div class="brand-info">
+          <span class="brand-name">Cyborg ERP</span>
+          <span class="brand-role">Student Portal</span>
+        </div>
+      </a>
+      <button id="sidebarToggleBtn" class="sidebar-toggle-btn" title="Toggle Sidebar">«</button>
+    </div>
+
+    <!-- Search Modules -->
+    <div class="sidebar-search">
+      <div class="search-box-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="moduleSearch" class="sidebar-search-input" placeholder="Search modules...">
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">MAIN MENU</div>
+
+      <!-- Dashboard Nav Item (Clicks to open detailed Dashboard view) -->
+      <a class="nav-item" id="navDashboard" data-tab="dashboard">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Dashboard</span>
+        </div>
+      </a>
+
+      <!-- Fee -->
+      <a class="nav-item" data-tab="fee">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+          </svg>
+          <span>Fee</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Time Table -->
+      <a class="nav-item" data-tab="timetable">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Time Table</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Academic -->
+      <a class="nav-item" data-tab="academic">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+          <span>Academic</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Exam -->
+      <a class="nav-item" data-tab="exam">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Exam</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Grievance -->
+      <a class="nav-item" data-tab="grievance">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Grievance</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Circular -->
+      <a class="nav-item" data-tab="circular">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span>Circular</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Hostel -->
+      <a class="nav-item" data-tab="hostel">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Hostel</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+
+      <!-- Placement -->
+      <a class="nav-item" data-tab="placement">
+        <div class="nav-item-left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>Placement</span>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </nav>
+
+    <!-- Appearance & Theme Selector -->
+    <div class="sidebar-footer">
+      <div class="nav-section-title" style="padding-left: 0;">APPEARANCE</div>
+      <div class="theme-pill-group">
+        <button class="theme-btn active" data-theme-val="blue">Blue</button>
+        <button class="theme-btn" data-theme-val="light">Light</button>
+        <button class="theme-btn" data-theme-val="dark">Dark</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <!-- Left: GEHU Banner & Campus Info -->
+      <div class="topbar-left">
+        <div class="gehu-logo-badge">
+          <img src="assets/gehu_banner.png" alt="Graphic Era Hill University" class="gehu-banner-img">
+        </div>
+        <div class="campus-title-wrap">
+          <div class="campus-name">GEHU-Bhimtal Campus</div>
+          <div class="portal-tag">STUDENT PORTAL</div>
+        </div>
+        <!-- Blue Home Button: Clicking this returns to Home Overview -->
+        <button id="homeBtn" class="home-btn" title="Home Overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <div class="session-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span>SESSION <strong>2026-27</strong></span>
+        </div>
+        <div class="current-date">FRI 16 Oct, 2026</div>
+      </div>
+
+      <!-- Center Search (Home View) -->
+      <div class="topbar-search" id="topbarSearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="topbar-search-input" placeholder="Search assignments, fee receipts, exam forms, library books...">
+      </div>
+
+      <!-- Right User Profile Card -->
+      <div class="user-profile-wrap" id="userProfileWrap" title="Click for Dashboard view">
+        <img src="assets/student_avatar.svg" alt="Vaibhavi Pandey" class="user-avatar">
+        <div class="user-details">
+          <div class="user-name">VAIBHAVI PANDEY</div>
+          <div class="user-program">BACHELOR OF TECHNOLOGY • Sem 3</div>
+        </div>
+        <a href="index.html" class="logout-icon-btn" title="Sign Out">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTAINER -->
+    <main class="page-container">
+      
+      <!-- ======================================================== -->
+      <!-- SECTION 1: HOME OVERVIEW (OPENS IMMEDIATELY UPON LOGIN)   -->
+      <!-- ======================================================== -->
+      <section id="homeView" class="view-section">
+        
+        <!-- Quote of the Day Banner -->
+        <div class="quote-banner">
+          <div class="quote-left">
+            <span class="quote-icon">“</span>
+            <span>Act as if what you do makes a difference. It does</span>
+          </div>
+          <div class="quote-author">— WILLIAM JAMES</div>
+        </div>
+
+        <!-- Hero Welcome Card -->
+        <div class="hero-card">
+          <div class="hero-left">
+            <h1 class="hero-title">Welcome back, VAIBHAVI 🌟</h1>
+            <p class="hero-subtitle">
+              Your Cyborg ERP Student Portal gives you one place to manage academics, attendance, LMS, fee, examination, library, placement, communication and student services.
+            </p>
+            <div class="hero-pills">
+              <span class="info-pill">Student ID: <strong>25101288302</strong></span>
+              <span class="info-pill">Class Coordinator: <strong>—</strong></span>
+              <span class="info-pill">Mentor: <strong>—</strong></span>
+              <span class="info-pill">HOD: <strong>—</strong></span>
+              <span class="info-pill">Email: <strong>vaibhavipandey2307@gmail.com</strong></span>
+              <span class="info-pill">Class Roll No: <strong>63</strong></span>
+            </div>
+          </div>
+
+          <!-- Digital Student Card Inside Hero -->
+          <div class="student-card">
+            <div class="student-card-title">Digital Student Card</div>
+            
+            <div class="card-field">
+              <span class="field-label">Name:</span>
+              <span class="field-value">VAIBHAVI PANDEY</span>
+            </div>
+
+            <div class="card-field">
+              <span class="field-label">Program:</span>
+              <span class="field-value">BACHELOR OF TECHNOLOGY</span>
+            </div>
+
+            <div class="card-field">
+              <span class="field-label">Semester:</span>
+              <span class="field-value">3</span>
+            </div>
+
+            <div class="card-field">
+              <span class="field-label">University Roll No:</span>
+              <span class="field-value">2561424</span>
+            </div>
+
+            <div class="card-field">
+              <span class="field-label">Enrollment No:</span>
+              <span class="field-value">PV-2561424</span>
+            </div>
+
+            <div class="card-field">
+              <span class="field-label">Status:</span>
+              <span class="status-badge"><span class="status-dot"></span> Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Quick Metrics Cards -->
+        <div class="metrics-grid">
+          
+          <!-- Attendance Card -->
+          <div class="metric-card">
+            <div class="corner-decor corner-yellow"></div>
+            <div class="metric-header">
+              <div class="metric-icon-wrap metric-icon-amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <span class="metric-label">Attendance</span>
+            </div>
+
+            <div class="metric-value-wrap">
+              <div class="metric-value highlight-green">91.78%</div>
+              <div class="attendance-bar-wrap">
+                <div class="attendance-bar-fill" style="width: 91.78%;"></div>
+              </div>
+            </div>
+
+            <div class="metric-footnote good">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Watch out • Minimum required 75%</span>
+            </div>
+          </div>
+
+          <!-- Assignments Card -->
+          <div class="metric-card">
+            <div class="corner-decor corner-cyan"></div>
+            <div class="metric-header">
+              <div class="metric-icon-wrap metric-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+              </div>
+              <span class="metric-label">Assignments</span>
+            </div>
+
+            <div class="metric-value-wrap">
+              <div class="metric-value">0/0</div>
+            </div>
+
+            <div class="metric-footnote">
+              <span>No assignments yet</span>
+            </div>
+          </div>
+
+          <!-- Total Fee Balance Card -->
+          <div class="metric-card">
+            <div class="corner-decor corner-mint"></div>
+            <div class="metric-header">
+              <div class="metric-icon-wrap metric-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                  <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+              </div>
+              <span class="metric-label">Total Fee Balance (Program Fee)</span>
+            </div>
+
+            <div class="metric-value-wrap">
+              <div class="metric-value">₹0</div>
+            </div>
+
+            <div class="metric-footnote">
+              <span>No upcoming due date</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Subject-Wise Attendance Breakdown Panel -->
+        <div class="attendance-detail-panel">
+          <div class="attendance-detail-header">
+            <h3 class="attendance-detail-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Subject-wise Academic Attendance Summary
+            </h3>
+            <span class="attendance-badge-safe">✓ Overall: 91.78% (Safe)</span>
+          </div>
+
+          <table class="attendance-table">
+            <thead>
+              <tr>
+                <th>CODE</th>
+                <th>COURSE / SUBJECT NAME</th>
+                <th>HELD</th>
+                <th>ATTENDED</th>
+                <th>PERCENTAGE</th>
+                <th>EXAM ELIGIBILITY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="subj-code">PCS308</td>
+                <td class="subj-name">Logic Design and Computer Organization Lab</td>
+                <td>24</td>
+                <td>23</td>
+                <td class="pct-pill">95.83%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+              <tr>
+                <td class="subj-code">TCS307</td>
+                <td class="subj-name">Object Oriented Programming with C++</td>
+                <td>32</td>
+                <td>30</td>
+                <td class="pct-pill">93.75%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+              <tr>
+                <td class="subj-code">TCS368</td>
+                <td class="subj-name">Advanced Probability for AI</td>
+                <td>28</td>
+                <td>26</td>
+                <td class="pct-pill">92.86%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+              <tr>
+                <td class="subj-code">TCS349</td>
+                <td class="subj-name">Responsible and Explainable AI</td>
+                <td>26</td>
+                <td>24</td>
+                <td class="pct-pill">92.31%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+              <tr>
+                <td class="subj-code">TCS302</td>
+                <td class="subj-name">Data Structures with C++</td>
+                <td>34</td>
+                <td>31</td>
+                <td class="pct-pill">91.18%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+              <tr>
+                <td class="subj-code">PCS302</td>
+                <td class="subj-name">Data Structures Lab</td>
+                <td>20</td>
+                <td>18</td>
+                <td class="pct-pill">90.00%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+              <tr>
+                <td class="subj-code">XCS301</td>
+                <td class="subj-name">Career Skills - I</td>
+                <td>16</td>
+                <td>14</td>
+                <td class="pct-pill">87.50%</td>
+                <td><span class="status-tag status-scheduled">Eligible</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SECTION 2: DETAILED DASHBOARD (WHEN CLICKING DASHBOARD)  -->
+      <!-- ======================================================== -->
+      <section id="dashboardView" class="view-section" style="display: none;">
+        
+        <!-- Back to Overview Button Row -->
+        <div class="back-bar-row">
+          <button id="btnBackOverview" class="btn-back-overview">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Main Overview</span>
+          </button>
+        </div>
+
+        <!-- Greeting Header Row with Actions -->
+        <div class="welcome-header-row">
+          <div class="welcome-info">
+            <h1 class="welcome-main-title">Welcome, VAIBHAVI PANDEY</h1>
+            <div class="welcome-sub-meta">
+              BACHELOR OF TECHNOLOGY Semester 3 • Roll No: 2561424 • Enroll: PV-2561424 • Class Roll No: 63
+            </div>
+          </div>
+
+          <div class="welcome-right-tools">
+            <div class="global-search-box">
+              <input type="text" class="global-search-input" placeholder="Search notice, subject, fee, result...">
+            </div>
+            <button class="btn-download-id" onclick="alert('Digital ID Card for VAIBHAVI PANDEY generated successfully!')">Download ID Card</button>
+            <div class="user-badge-initials" title="VAIBHAVI PANDEY">VP</div>
+          </div>
+        </div>
+
+        <!-- Two Column: Hero Info Panel & Important Alerts -->
+        <div class="hero-alerts-grid">
+          
+          <!-- Hero Panel with 12 Tiles -->
+          <div class="hero-panel">
+            <h2 class="hero-panel-title">
+              One student dashboard for academics, attendance, fees, exams and campus communication.
+            </h2>
+            <p class="hero-panel-desc">
+              Cyborg ERP connects every student with real-time academic progress, subject-wise attendance, lecture plan changes, teacher leave substitution, assignments, exam notifications, library records and institutional announcements.
+            </p>
+
+            <!-- 12 Tiles Grid -->
+            <div class="student-tiles-grid">
+              <div class="tile-box">
+                <span class="tile-label">PROGRAM</span>
+                <span class="tile-value">B.Tech</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">CURRENT SEMESTER</span>
+                <span class="tile-value">3</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">MENTOR</span>
+                <span class="tile-value">—</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">SECTION</span>
+                <span class="tile-value">F</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">ROLL NO</span>
+                <span class="tile-value">2561424</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">ENROLL NO</span>
+                <span class="tile-value">PV-2561424</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">STUDENT ID</span>
+                <span class="tile-value">25101288302</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">EMAIL</span>
+                <span class="tile-value" title="vaibhavipandey2307@gmail.com">vaibhavipandey2307@gmail.com</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">DOB</span>
+                <span class="tile-value">23/12/2008</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">BRANCH</span>
+                <span class="tile-value">B.Tech (CSE)</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">MOBILE NO</span>
+                <span class="tile-value">9876543210</span>
+              </div>
+
+              <div class="tile-box">
+                <span class="tile-label">BLOOD GROUP</span>
+                <span class="tile-value">O+ve</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alerts Panel -->
+          <div class="alerts-panel">
+            <div class="alerts-header">
+              <h3 class="alerts-title">Important Alerts</h3>
+              <span class="alert-badge-count">1 New</span>
+            </div>
+
+            <div class="alert-item-box">
+              <div class="alert-text-row">
+                <span class="alert-dot"></span>
+                <span>Term Evaluation Theory Regular/Back Examination, September 2026.</span>
+              </div>
+              <div class="alert-date">18/09/2026</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 6 Metrics Cards Row -->
+        <div class="metrics-row">
+          
+          <!-- Card 1: Attendance -->
+          <div class="metric-mini-card">
+            <div>
+              <div class="metric-mini-icon icon-yellow">%</div>
+              <div class="metric-mini-title">Overall Attendance</div>
+              <div class="metric-mini-val attendance-highlight">91.78%</div>
+            </div>
+            <div class="metric-mini-sub" style="color:#4ade80;">Minimum required: 75%</div>
+          </div>
+
+          <!-- Card 2: Course Progress -->
+          <div class="metric-mini-card">
+            <div>
+              <div class="metric-mini-icon icon-blue">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              </div>
+              <div class="metric-mini-title">Course Progress</div>
+              <div class="metric-mini-val">35.75%</div>
+            </div>
+            <div class="metric-mini-sub">Lecture plan completion</div>
+          </div>
+
+          <!-- Card 3: OBE Attainment -->
+          <div class="metric-mini-card">
+            <div>
+              <div class="metric-mini-icon icon-red">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+              </div>
+              <div class="metric-mini-title">OBE Attainment</div>
+              <div class="metric-mini-val">--%</div>
+            </div>
+            <div class="metric-mini-sub">CO/PO outcome progress</div>
+          </div>
+
+          <!-- Card 4: Assignments -->
+          <div class="metric-mini-card">
+            <div>
+              <div class="metric-mini-icon icon-cyan">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div class="metric-mini-title">Assignments</div>
+              <div class="metric-mini-val">0/0</div>
+            </div>
+            <div class="metric-mini-sub">No assignments yet</div>
+          </div>
+
+          <!-- Card 5: Total Fee Balance -->
+          <div class="metric-mini-card">
+            <div>
+              <div class="metric-mini-icon icon-indigo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              </div>
+              <div class="metric-mini-title">Total Fee Balance (Program Fee)</div>
+              <div class="metric-mini-val">₹0</div>
+            </div>
+            <div class="metric-mini-sub">No upcoming due date</div>
+          </div>
+
+          <!-- Card 6: Carry Papers -->
+          <div class="metric-mini-card">
+            <div>
+              <div class="metric-mini-icon icon-multi">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <div class="metric-mini-title">Carry Papers</div>
+              <div class="metric-mini-val">0</div>
+            </div>
+            <div class="metric-mini-sub">No back papers</div>
+          </div>
+
+        </div>
+
+        <!-- Tables Lower Grid: Timetable & Course Progress -->
+        <div class="tables-lower-grid">
+          
+          <!-- Left: Today's Time Table & Class Substitution -->
+          <div class="timetable-panel">
+            <div class="panel-header-row">
+              <h3 class="panel-title">Today's Time Table & Class Substitution</h3>
+              <span class="date-pill">Fri 16 Oct</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>TIME</th>
+                  <th>COURSE</th>
+                  <th>FACULTY</th>
+                  <th>STATUS</th>
+                  <th>NOTE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="time-cell">09:00 - 09:55</td>
+                  <td>Logic Design and Computer Organization Lab(PCS308)</td>
+                  <td>MOHIT PANT</td>
+                  <td><span class="status-tag status-scheduled">Scheduled</span></td>
+                  <td class="note-text">—</td>
+                </tr>
+                <tr>
+                  <td class="time-cell">09:55 - 10:50</td>
+                  <td>Logic Design and Computer Organization Lab(PCS308)</td>
+                  <td>MOHIT PANT</td>
+                  <td><span class="status-tag status-scheduled">Scheduled</span></td>
+                  <td class="note-text">—</td>
+                </tr>
+                <tr>
+                  <td class="time-cell">11:00 - 11:55</td>
+                  <td>Advanced Probability for AI(TCS368)</td>
+                  <td>Kalpana Chauhan</td>
+                  <td><span class="status-tag status-scheduled">Scheduled</span></td>
+                  <td class="note-text">—</td>
+                </tr>
+                <tr>
+                  <td class="time-cell">11:55 - 12:50</td>
+                  <td>Responsible and Explainable AI( TCS 349)</td>
+                  <td>Manoj Kaushik</td>
+                  <td><span class="status-tag status-substitution">Substitution</span></td>
+                  <td class="note-text">Lecture Substituted Advanced Probability for AI(TCS368), Deepali Chaudhary</td>
+                </tr>
+                <tr>
+                  <td class="time-cell">13:20 - 14:15</td>
+                  <td>Object Oriented Programming with C++ (TCS307)</td>
+                  <td>Soham Pandey</td>
+                  <td><span class="status-tag status-substitution">Substitution</span></td>
+                  <td class="note-text">Lecture Substituted Responsible and Explainable AI( TCS 349), Divyanshu Bhatt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Right: Course Progress -->
+          <div class="progress-panel">
+            <div class="panel-header-row">
+              <h3 class="panel-title">Course Progress</h3>
+              <span class="sem-pill">Semester 3</span>
+            </div>
+
+            <div class="course-progress-list">
+              
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Data Structures Lab">Data Structures Lab</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-orange" style="width: 50%;"></div>
+                </div>
+                <span class="course-prog-pct">50%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Career Skills - I">Career Skills - I</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-red" style="width: 36%;"></div>
+                </div>
+                <span class="course-prog-pct">36%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Career Skills - I">Career Skills - I</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-gray" style="width: 0%;"></div>
+                </div>
+                <span class="course-prog-pct">0%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Logic Design and Computer Organization">Logic Design and Computer Organization</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-red" style="width: 33%;"></div>
+                </div>
+                <span class="course-prog-pct">33%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Data Structures with C++">Data Structures with C++</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-red" style="width: 20%;"></div>
+                </div>
+                <span class="course-prog-pct">20%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Object Oriented Programming with C++">Object Oriented Programming with C++</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-green" style="width: 80%;"></div>
+                </div>
+                <span class="course-prog-pct">80%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Logic Design and Computer Organization Lab">Logic Design and Computer Organization Lab</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-cyan" style="width: 67%;"></div>
+                </div>
+                <span class="course-prog-pct">67%</span>
+              </div>
+
+              <div class="course-progress-row">
+                <span class="course-prog-name" title="Advanced Probability for AI">Advanced Probability for AI</span>
+                <div class="course-bar-wrap">
+                  <div class="course-bar-fill bar-gray" style="width: 0%;"></div>
+                </div>
+                <span class="course-prog-pct">0%</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Era Hill University | ERP | Cyborg-ERP</title>
+  <link rel="icon" type="image/png" href="assets/logo_clean.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="portal-wrapper">
+    <!-- Top Left University & ERP Branding -->
+    <header class="brand-header">
+      <div class="brand-logo-wrap">
+        <img src="assets/logo_clean.png" alt="Graphic Era Hill University Logo" class="brand-logo">
+      </div>
+      <div class="brand-badge">
+        <div class="brand-subtext">
+          <!-- Graduation Cap Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+          <span>ERP PORTAL</span>
+        </div>
+        <div class="brand-title">Graphic Era Hill University</div>
+      </div>
+    </header>
+
+    <!-- Main Content: Floating Frosted Glass Login Card -->
+    <main class="main-content">
+      <div class="login-card">
+        
+        <!-- Card Header -->
+        <div class="card-header">
+          <div class="account-badge">
+            <!-- Small Lock Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>YOUR CAMPUS ACCOUNT</span>
+          </div>
+          <h1 class="card-title">Welcome back</h1>
+          <p class="card-desc">Sign in to Cyborg ERP to continue.</p>
+        </div>
+
+        <!-- Form Elements -->
+        <form id="loginForm" class="login-form" action="dashboard.html" novalidate autocomplete="off">
+          
+          <!-- User ID / Email Input -->
+          <div class="input-group">
+            <div class="input-icon-left">
+              <!-- User Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <input 
+              type="text" 
+              id="userIdInput" 
+              class="form-input" 
+              placeholder="User ID / Email*" 
+              required
+              autocomplete="username"
+            >
+          </div>
+
+          <!-- Password Input -->
+          <div class="input-group">
+            <div class="input-icon-left">
+              <!-- Lock Key Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <input 
+              type="password" 
+              id="passwordInput" 
+              class="form-input" 
+              placeholder="Password*" 
+              required
+              autocomplete="current-password"
+            >
+            <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Toggle password visibility">
+              <!-- Eye Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Stylized CAPTCHA Box -->
+          <div class="captcha-container">
+            <div class="captcha-canvas-wrap">
+              <canvas id="captchaCanvas" width="220" height="38"></canvas>
+            </div>
+            <button type="button" id="refreshCaptchaBtn" class="captcha-refresh-btn" title="Click to refresh CAPTCHA">
+              <!-- Circular Refresh Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Enter CAPTCHA Input -->
+          <div class="input-group">
+            <div class="input-icon-left">
+              <!-- Shield Check Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <input 
+              type="text" 
+              id="captchaInput" 
+              class="form-input" 
+              placeholder="Enter CAPTCHA*" 
+              required
+              maxlength="6"
+            >
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="submitBtn" class="btn-submit">
+            <!-- Arrow Right into Box / Portal -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Login to Cyborg ERP</span>
+          </button>
+
+          <!-- Links Row -->
+          <div class="form-links">
+            <a href="#" id="forgotIdLink" class="form-link">Forgot user ID?</a>
+            <a href="#" id="forgotPasswordLink" class="form-link">Forgot password?</a>
+          </div>
+
+        </form>
+
+        <!-- Card Footer -->
+        <footer class="card-footer">
+          <div class="security-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Secure access to your campus account.</span>
+          </div>
+          <div class="copyright-text">
+            &copy; 2026 Cyborg IT Services Pvt. Ltd. All rights reserved.
+          </div>
+          <div class="powered-text">
+            Powered by <a href="https://cyborgerp.com" target="_blank" rel="noopener noreferrer">Cyborg IT Services (P) Ltd <span style="font-size: 10px;">↗</span></a>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+
+    <!-- Empty footer spacer to maintain flex alignment -->
+    <div style="height: 10px;"></div>
+  </div>
+
+
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-msg">
+    <span id="toastMsg">Notification message</span>
+  </div>
+
+  <!-- Account Recovery Modal -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal-card">
+      <h3 id="modalTitle">Account Recovery</h3>
+      <p id="modalDesc">Enter details to proceed.</p>
+      <div class="input-group">
+        <input type="text" class="form-input" placeholder="Enter Registration No. / Email" style="padding-left: 14px;">
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="modalCloseBtn" class="btn-secondary">Cancel</button>
+        <button type="button" class="btn-submit" style="margin-top:0;" onclick="alert('Recovery instructions sent to registered contact info!'); document.getElementById('modalOverlay').classList.remove('active');">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
