@@ -21,6 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const navTimetable = document.getElementById('navTimetable');
   const navFee = document.getElementById('navFee');
   const navExam = document.getElementById('navExam');
+  const navHostel = document.getElementById('navHostel');
+  const navPlacement = document.getElementById('navPlacement');
+  const hostelFeeCard = document.getElementById('hostelFeeCard');
+  const placementCard = document.getElementById('placementCard');
+  const btnPlacementViewAll = document.getElementById('btnPlacementViewAll');
+  const placementEmptyBox = document.getElementById('placementEmptyBox');
+  const pillPlacementStatus = document.getElementById('pillPlacementStatus');
   const brandLogoLink = document.getElementById('brandLogoLink');
   const userProfileWrap = document.getElementById('userProfileWrap');
   const btnBackOverview = document.getElementById('btnBackOverview');
@@ -115,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
       showTimetableView(false);
     } else if (view === 'fee') {
       showFeeView(false);
+    } else if (view === 'hostel') {
+      handleHostelClick(null, false);
+    } else if (view === 'placement') {
+      handlePlacementClick(null, false);
     } else if (view === 'exam') {
       showExamView(false);
     } else {
@@ -183,6 +194,65 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       showExamView(true);
     });
+  }
+
+  // Hostel & Placement Handlers
+  function handleHostelClick(e, pushHistory = true) {
+    if (e && e.preventDefault) e.preventDefault();
+    closeMobileSidebar();
+    showFeeView(pushHistory);
+    navItems.forEach(n => n.classList.remove('active'));
+    if (navHostel) navHostel.classList.add('active');
+    if (pushHistory) {
+      history.pushState({ view: 'hostel' }, '', '#hostel');
+    }
+    setTimeout(() => {
+      const card = document.getElementById('hostelFeeCard');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('card-pulse-highlight');
+        setTimeout(() => card.classList.remove('card-pulse-highlight'), 1800);
+      }
+    }, 150);
+  }
+
+  function handlePlacementClick(e, pushHistory = true) {
+    if (e && e.preventDefault) e.preventDefault();
+    closeMobileSidebar();
+    alert("Not eligible in 3 Sem!\n\nCampus placement drives, company registrations, and full-time internships eligibility begins in Semester 6 / 7.");
+    showFeeView(pushHistory);
+    navItems.forEach(n => n.classList.remove('active'));
+    if (navPlacement) navPlacement.classList.add('active');
+    if (pushHistory) {
+      history.pushState({ view: 'placement' }, '', '#placement');
+    }
+    setTimeout(() => {
+      const card = document.getElementById('placementCard');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('card-pulse-highlight');
+        setTimeout(() => card.classList.remove('card-pulse-highlight'), 1800);
+      }
+    }, 150);
+  }
+
+  // Hostel Nav Click
+  if (navHostel) {
+    navHostel.addEventListener('click', (e) => handleHostelClick(e, true));
+  }
+
+  // Placement Nav & Card Clicks
+  if (navPlacement) {
+    navPlacement.addEventListener('click', (e) => handlePlacementClick(e, true));
+  }
+  if (btnPlacementViewAll) {
+    btnPlacementViewAll.addEventListener('click', (e) => handlePlacementClick(e, false));
+  }
+  if (placementEmptyBox) {
+    placementEmptyBox.addEventListener('click', (e) => handlePlacementClick(e, false));
+  }
+  if (pillPlacementStatus) {
+    pillPlacementStatus.addEventListener('click', (e) => handlePlacementClick(e, false));
   }
 
   // Home Carry Card Click
@@ -282,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Other Navigation items click
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      if (item === navDashboard || item === navAcademic || item === navTimetable || item === navFee || item === navExam) return; // Handled separately
+      if (item === navDashboard || item === navAcademic || item === navTimetable || item === navFee || item === navExam || item === navHostel || item === navPlacement) return; // Handled separately
       e.preventDefault();
       closeMobileSidebar();
       navItems.forEach(n => n.classList.remove('active'));
@@ -312,6 +382,10 @@ document.addEventListener('DOMContentLoaded', () => {
     showTimetableView(false);
   } else if (window.location.hash === '#fee') {
     showFeeView(false);
+  } else if (window.location.hash === '#hostel') {
+    handleHostelClick(null, false);
+  } else if (window.location.hash === '#placement') {
+    handlePlacementClick(null, false);
   } else if (window.location.hash === '#exam') {
     showExamView(false);
   } else {

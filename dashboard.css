@@ -45,7 +45,7 @@ body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  font-size: 14.5px;
+  font-size: 15.5px;
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
@@ -232,11 +232,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 12px;
+  padding: 10px 13px;
   border-radius: 10px;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -1152,13 +1152,13 @@ body {
 .icon-multi { background: #ede9fe; color: #6d28d9; }
 
 .metric-mini-title {
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--text-muted);
 }
 
 .metric-mini-val {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 800;
   color: #ffffff;
   margin: 5px 0 3px;
@@ -1169,7 +1169,7 @@ body {
 }
 
 .metric-mini-sub {
-  font-size: 11px;
+  font-size: 12.5px;
   color: var(--text-dim);
 }
 
@@ -2798,16 +2798,16 @@ th.col-sticky-day {
     border-radius: 14px;
   }
   .fee-student-name {
-    font-size: 17px;
+    font-size: 19px;
   }
   .fee-field-row {
-    font-size: 12.5px;
+    font-size: 14px;
   }
   .fee-pending-amount {
-    font-size: 32px;
+    font-size: 36px;
   }
   .fee-breakdown-row {
-    font-size: 13.5px;
+    font-size: 14.5px;
   }
   .fee-receipt-item {
     flex-direction: column;
@@ -2819,5 +2819,281 @@ th.col-sticky-day {
     justify-content: space-between;
   }
 }
+
+/* ======================================================== */
+/* SECTION: SCHOLARSHIP NOTICE (MATCHES SCREENSHOT)          */
+/* ======================================================== */
+.scholarship-notice-card {
+  background: rgba(234, 179, 8, 0.05);
+  border: 1.5px dashed rgba(234, 179, 8, 0.3);
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.scholarship-trophy-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 8px rgba(234, 179, 8, 0.3));
+}
+
+.scholarship-notice-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* ======================================================== */
+/* SECTION: HOSTEL FEE CARD (MATCHES SCREENSHOT EXACTLY)    */
+/* ======================================================== */
+.hostel-fee-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.hostel-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hostel-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+}
+
+.hostel-badge-pill {
+  background: #ede9fe;
+  color: #7c3aed;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+}
+
+[data-theme="dark"] .hostel-badge-pill {
+  background: rgba(124, 58, 237, 0.22);
+  color: #c084fc;
+}
+
+.hostel-pending-box {
+  background: rgba(124, 58, 237, 0.04);
+  border: 1.5px solid rgba(124, 58, 237, 0.2);
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin-bottom: 22px;
+}
+
+.hostel-pending-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #7c3aed;
+  margin-bottom: 6px;
+}
+
+[data-theme="dark"] .hostel-pending-title {
+  color: #c084fc;
+}
+
+.hostel-pending-amount {
+  font-size: 42px;
+  font-weight: 800;
+  color: #7c3aed;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+[data-theme="dark"] .hostel-pending-amount {
+  color: #c084fc;
+}
+
+.hostel-last-date {
+  font-size: 14.5px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.btn-hostel-pay {
+  background: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-size: 15.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 12px rgba(124, 58, 237, 0.3);
+}
+
+.btn-hostel-pay:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.hostel-breakdown-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hostel-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--bg-card-border);
+}
+
+.hostel-breakdown-row:last-child {
+  border-bottom: none;
+}
+
+.hostel-bd-label {
+  font-size: 15.5px;
+  color: var(--text-muted);
+}
+
+.hostel-bd-val {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ======================================================== */
+/* SECTION: TRAINING & PLACEMENT (MATCHES SCREENSHOT)       */
+/* ======================================================== */
+.placement-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.placement-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.placement-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+}
+
+.btn-placement-view {
+  background: rgba(37, 99, 235, 0.09);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-placement-view:hover {
+  background: rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
+}
+
+.placement-empty-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px dashed var(--bg-card-border);
+  border-radius: 18px;
+  padding: 34px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.placement-empty-box:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.placement-briefcase-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(148, 163, 184, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.placement-empty-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 440px;
+}
+
+.placement-status-pill {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  transition: all 0.2s ease;
+}
+
+.placement-status-pill:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: scale(1.02);
+}
+
+/* Card highlight pulse effect */
+.card-pulse-highlight {
+  animation: pulseCard 1.8s ease-in-out;
+}
+
+@keyframes pulseCard {
+  0% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(124, 58, 237, 0);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
 
 
