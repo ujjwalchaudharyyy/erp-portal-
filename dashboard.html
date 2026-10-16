@@ -91,7 +91,7 @@
       </a>
 
       <!-- Exam -->
-      <a class="nav-item" data-tab="exam">
+      <a class="nav-item" id="navExam" data-tab="exam">
         <div class="nav-item-left">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -648,15 +648,15 @@
           </div>
 
           <!-- Card 6: Carry Papers -->
-          <div class="metric-mini-card">
+          <div class="metric-mini-card" id="homeCarryCard" style="cursor: pointer;" title="Click to view Exam & Back Papers">
             <div>
-              <div class="metric-mini-icon icon-multi">
+              <div class="metric-mini-icon icon-red" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
               </div>
               <div class="metric-mini-title">Carry Papers</div>
-              <div class="metric-mini-val">0</div>
+              <div class="metric-mini-val" style="color: #f87171;">1</div>
             </div>
-            <div class="metric-mini-sub">No back papers</div>
+            <div class="metric-mini-sub" style="color: #fca5a5;">1 back paper in Sem 2 (7.78 SGPA)</div>
           </div>
 
         </div>
@@ -1226,6 +1226,163 @@
 
             </div>
 
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SECTION 5: EXAM & RESULT SUMMARY (OFFICIAL VIEW)         -->
+      <!-- ======================================================== -->
+      <section id="examView" class="view-section" style="display: none;">
+        
+        <!-- Back to Overview Button Row -->
+        <div class="back-bar-row">
+          <button class="btn-back-overview btn-back-to-home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Main Overview</span>
+          </button>
+        </div>
+
+        <!-- Top Header Card (Matches Screenshot) -->
+        <div class="exam-header-card">
+          <div class="exam-header-main">
+            <h1 class="exam-main-title">Exam Summary</h1>
+            <p class="exam-main-desc">Your year and semester wise result summary across the programme</p>
+          </div>
+          <div class="exam-header-right">
+            <span class="exam-sem-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              <span>2 Semesters</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 3 Stat Cards Grid (Matches Screenshot with 1 back paper in Sem 2) -->
+        <div class="exam-stat-grid">
+          
+          <!-- Card 1: Semesters Recorded -->
+          <div class="exam-stat-card">
+            <div class="exam-stat-icon-wrap icon-wrap-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <div class="exam-stat-details">
+              <div class="exam-stat-val">2</div>
+              <div class="exam-stat-label">Semesters Recorded</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Latest SGPA -->
+          <div class="exam-stat-card">
+            <div class="exam-stat-icon-wrap icon-wrap-star">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <div class="exam-stat-details">
+              <div class="exam-stat-val">7.78</div>
+              <div class="exam-stat-label">Latest SGPA</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Total Back Paper(s) (1 Back as requested) -->
+          <div class="exam-stat-card">
+            <div class="exam-stat-icon-wrap icon-wrap-back">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <div class="exam-stat-details">
+              <div class="exam-stat-val val-has-back">1</div>
+              <div class="exam-stat-label">Total Back Paper(s)</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Lower Card: Result Summary Table (Matches Screenshot) -->
+        <div class="exam-result-panel">
+          
+          <div class="exam-result-header">
+            <div class="result-header-left">
+              <div class="result-number-badge">1</div>
+              <div>
+                <h2 class="result-section-title">Result Summary</h2>
+                <p class="result-section-sub">Year / semester wise SGPA, back papers and result status</p>
+              </div>
+            </div>
+            <span class="result-tag-pill">Results</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="exam-result-table">
+              <thead>
+                <!-- Main Column Headers -->
+                <tr>
+                  <th style="width: 60px;">S.No.</th>
+                  <th>Year / Sem</th>
+                  <th>SGPA</th>
+                  <th>Back Paper(s)</th>
+                  <th>Result Status</th>
+                  <th>Grade View</th>
+                  <th>Marksheet View</th>
+                  <th>Back Applied</th>
+                </tr>
+                <!-- Filter Row (Matches Screenshot Inputs with Funnel Icon) -->
+                <tr class="table-filter-row">
+                  <td></td>
+                  <td>
+                    <div class="filter-input-wrap">
+                      <input type="text" class="table-filter-input" placeholder="">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="filter-input-wrap">
+                      <input type="text" class="table-filter-input" placeholder="">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="filter-input-wrap">
+                      <input type="text" class="table-filter-input" placeholder="">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="filter-input-wrap">
+                      <input type="text" class="table-filter-input" placeholder="">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    </div>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row 1: Semester 1 (7.19 SGPA, No Backs) -->
+                <tr>
+                  <td class="text-center">1</td>
+                  <td class="text-center font-bold">1</td>
+                  <td class="text-highlight-sgpa">7.19</td>
+                  <td><span class="badge-no-backs">No Backs</span></td>
+                  <td><span class="badge-pass-clean">Pass With First Attempt</span></td>
+                  <td><button class="btn-exam-action" onclick="alert('Grade Card for Semester 1 (SGPA: 7.19) - All subjects passed successfully!')">View</button></td>
+                  <td><button class="btn-exam-action" onclick="alert('Marksheet Detail for Semester 1 downloaded!')">View Detail</button></td>
+                  <td><button class="btn-exam-action btn-exam-applied" onclick="alert('Status: No back papers in Semester 1!')">Back Applied</button></td>
+                </tr>
+
+                <!-- Row 2: Semester 2 (7.78 SGPA, 1 Back Paper as requested) -->
+                <tr class="row-highlight-back">
+                  <td class="text-center">2</td>
+                  <td class="text-center font-bold">2</td>
+                  <td class="text-highlight-sgpa">7.78</td>
+                  <td><span class="badge-one-back">1 Back Paper</span></td>
+                  <td><span class="badge-pass-back">Promoted with 1 Back</span></td>
+                  <td><button class="btn-exam-action" onclick="alert('Grade Card for Semester 2 (SGPA: 7.78) - Back Paper: TCS201 (Discrete Mathematics)')">View</button></td>
+                  <td><button class="btn-exam-action" onclick="alert('Marksheet Detail for Semester 2 (SGPA: 7.78) downloaded!')">View Detail</button></td>
+                  <td><button class="btn-exam-action btn-apply-active" onclick="alert('Back Paper Examination form opened for TCS201 (Semester 2). Application Fee: ₹1,000')">Back Applied</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
         </div>

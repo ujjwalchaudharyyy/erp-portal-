@@ -14,16 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const dashboardView = document.getElementById('dashboardView');
   const timetableView = document.getElementById('timetableView');
   const feeView = document.getElementById('feeView');
+  const examView = document.getElementById('examView');
   const homeBtn = document.getElementById('homeBtn');
   const navDashboard = document.getElementById('navDashboard');
   const navAcademic = document.getElementById('navAcademic');
   const navTimetable = document.getElementById('navTimetable');
   const navFee = document.getElementById('navFee');
+  const navExam = document.getElementById('navExam');
   const brandLogoLink = document.getElementById('brandLogoLink');
   const userProfileWrap = document.getElementById('userProfileWrap');
   const btnBackOverview = document.getElementById('btnBackOverview');
   const backToHomeBtns = document.querySelectorAll('.btn-back-to-home');
   const homeFeeCard = document.getElementById('homeFeeCard');
+  const homeCarryCard = document.getElementById('homeCarryCard');
 
   // Mobile Drawer helpers
   function openMobileSidebar() {
@@ -43,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dashboardView) dashboardView.style.display = 'none';
     if (timetableView) timetableView.style.display = 'none';
     if (feeView) feeView.style.display = 'none';
+    if (examView) examView.style.display = 'none';
     navItems.forEach(n => n.classList.remove('active'));
   }
 
@@ -91,6 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function showExamView(pushHistory = true) {
+    closeMobileSidebar();
+    hideAllViews();
+    if (examView) examView.style.display = 'flex';
+    if (navExam) navExam.classList.add('active');
+    if (pushHistory) {
+      history.pushState({ view: 'exam' }, '', '#exam');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   // Handle browser back button (popstate)
   window.addEventListener('popstate', (e) => {
     const view = (e.state && e.state.view) || (window.location.hash.replace('#', ''));
@@ -100,6 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
       showTimetableView(false);
     } else if (view === 'fee') {
       showFeeView(false);
+    } else if (view === 'exam') {
+      showExamView(false);
     } else {
       showHomeView(false);
     }
@@ -157,6 +174,22 @@ document.addEventListener('DOMContentLoaded', () => {
     navFee.addEventListener('click', (e) => {
       e.preventDefault();
       showFeeView(true);
+    });
+  }
+
+  // Exam Nav Click
+  if (navExam) {
+    navExam.addEventListener('click', (e) => {
+      e.preventDefault();
+      showExamView(true);
+    });
+  }
+
+  // Home Carry Card Click
+  if (homeCarryCard) {
+    homeCarryCard.addEventListener('click', (e) => {
+      e.preventDefault();
+      showExamView(true);
     });
   }
 
@@ -249,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Other Navigation items click
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      if (item === navDashboard || item === navAcademic || item === navTimetable || item === navFee) return; // Handled separately
+      if (item === navDashboard || item === navAcademic || item === navTimetable || item === navFee || item === navExam) return; // Handled separately
       e.preventDefault();
       closeMobileSidebar();
       navItems.forEach(n => n.classList.remove('active'));
@@ -279,6 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
     showTimetableView(false);
   } else if (window.location.hash === '#fee') {
     showFeeView(false);
+  } else if (window.location.hash === '#exam') {
+    showExamView(false);
   } else {
     showHomeView(false);
   }
