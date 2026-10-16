@@ -113,6 +113,12 @@ body {
   color: var(--text-muted);
 }
 
+.sidebar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .sidebar-toggle-btn {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--bg-card-border);
@@ -130,6 +136,43 @@ body {
 .sidebar-toggle-btn:hover {
   background: var(--bg-hover);
   color: #fff;
+}
+
+.sidebar-close-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--bg-card-border);
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.sidebar-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* Sidebar Backdrop Overlay on Mobile */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .sidebar-search {
@@ -321,6 +364,31 @@ body {
   font-weight: 700;
   color: var(--accent-cyan);
   letter-spacing: 0.9px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--bg-card-border);
+  color: #ffffff;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-hover);
+  color: #60a5fa;
+}
+
+.mobile-menu-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .home-btn {
@@ -1268,11 +1336,40 @@ body {
   color: #ffffff;
 }
 
-/* RESPONSIVE */
+/* TABLE RESPONSIVE WRAPPER */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.tile-span-2 {
+  grid-column: span 1;
+}
+
+/* ========================================================= */
+/* RESPONSIVE BREAKPOINTS                                     */
+/* ========================================================= */
+
 @media (max-width: 1200px) {
   .hero-card {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 24px;
   }
   .student-card {
@@ -1290,9 +1387,57 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* MOBILE DRAWER SIDEBAR */
   .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 84vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.85);
+    display: flex !important;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle-btn {
     display: none;
   }
+
+  .sidebar-close-btn {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  /* TOPBAR ADAPTATIONS */
+  .topbar {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .session-badge,
+  .current-date {
+    display: none;
+  }
+
+  .topbar-search {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+
   .metrics-grid {
     grid-template-columns: 1fr;
   }
@@ -1314,3 +1459,290 @@ body {
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    font-size: 13.5px;
+  }
+
+  .page-container {
+    padding: 16px 14px 32px;
+    gap: 16px;
+  }
+
+  /* TOPBAR COMPACT */
+  .topbar-left {
+    gap: 10px;
+  }
+
+  .gehu-banner-img {
+    height: 28px;
+  }
+
+  .gehu-logo-badge {
+    padding: 3px 6px;
+  }
+
+  .campus-name {
+    font-size: 13px;
+  }
+
+  .portal-tag {
+    font-size: 9.5px;
+  }
+
+  .home-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .home-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .user-profile-wrap {
+    padding: 4px 10px 4px 4px;
+    gap: 8px;
+  }
+
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .user-name {
+    font-size: 12px;
+  }
+
+  .user-program {
+    display: none;
+  }
+
+  /* QUOTE BANNER */
+  .quote-banner {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .quote-left {
+    font-size: 13.5px;
+    gap: 10px;
+  }
+
+  .quote-icon {
+    font-size: 22px;
+  }
+
+  .quote-author {
+    font-size: 11px;
+    align-self: flex-end;
+  }
+
+  /* HERO CARD */
+  .hero-card {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .hero-title {
+    font-size: 22px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+  }
+
+  .hero-pills {
+    gap: 6px;
+  }
+
+  .info-pill {
+    padding: 5px 12px;
+    font-size: 12px;
+    word-break: break-word;
+  }
+
+  .student-card {
+    padding: 18px 16px;
+  }
+
+  .card-field {
+    font-size: 12px;
+  }
+
+  /* METRICS */
+  .metric-card {
+    padding: 18px 16px;
+  }
+
+  .metric-value {
+    font-size: 28px;
+  }
+
+  /* ATTENDANCE PANEL & TABLES */
+  .attendance-detail-panel {
+    padding: 18px 14px;
+  }
+
+  .attendance-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .attendance-detail-title {
+    font-size: 14.5px;
+  }
+
+  .attendance-table th,
+  .attendance-table td {
+    padding: 10px 10px;
+    font-size: 12px;
+  }
+
+  .attendance-table .subj-name {
+    min-width: 170px;
+    white-space: normal;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .custom-table td:nth-child(2) {
+    min-width: 160px;
+    white-space: normal;
+  }
+
+  .note-text {
+    min-width: 140px;
+    white-space: normal;
+  }
+
+  /* DETAILED DASHBOARD VIEW */
+  .welcome-main-title {
+    font-size: 22px;
+  }
+
+  .welcome-sub-meta {
+    font-size: 12px;
+    line-height: 1.45;
+    word-break: break-word;
+  }
+
+  .welcome-right-tools {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .btn-download-id {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .user-badge-initials {
+    display: none;
+  }
+
+  .hero-panel {
+    padding: 20px 16px;
+  }
+
+  .hero-panel-title {
+    font-size: 18px;
+  }
+
+  .hero-panel-desc {
+    font-size: 12.5px;
+  }
+
+  .tile-span-2 {
+    grid-column: span 2;
+  }
+
+  .tile-box {
+    padding: 8px 10px;
+  }
+
+  .tile-label {
+    font-size: 10px;
+  }
+
+  .tile-value {
+    font-size: 12px;
+    white-space: normal;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+
+  .metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .metric-mini-card {
+    padding: 14px;
+    min-height: 120px;
+  }
+
+  .metric-mini-val {
+    font-size: 20px;
+  }
+
+  .course-progress-row {
+    gap: 8px;
+    font-size: 11.5px;
+  }
+
+  .course-prog-name {
+    width: 130px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 12px 10px 24px;
+  }
+
+  .topbar {
+    padding: 8px 10px;
+  }
+
+  .campus-title-wrap {
+    display: none;
+  }
+
+  .metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .student-tiles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tile-span-2 {
+    grid-column: span 1;
+  }
+
+  .course-progress-row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .course-prog-name {
+    width: 100%;
+  }
+
+  .course-bar-wrap {
+    width: calc(100% - 44px);
+  }
+}
+

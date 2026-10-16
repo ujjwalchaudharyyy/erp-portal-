@@ -20,7 +20,10 @@
           <span class="brand-role">Student Portal</span>
         </div>
       </a>
-      <button id="sidebarToggleBtn" class="sidebar-toggle-btn" title="Toggle Sidebar">«</button>
+      <div class="sidebar-actions">
+        <button id="sidebarToggleBtn" class="sidebar-toggle-btn" title="Toggle Sidebar">«</button>
+        <button id="sidebarCloseBtn" class="sidebar-close-btn" title="Close Menu" aria-label="Close Menu">✕</button>
+      </div>
     </div>
 
     <!-- Search Modules -->
@@ -160,6 +163,9 @@
       </div>
     </div>
   </aside>
+  
+  <!-- BACKDROP OVERLAY FOR MOBILE SIDEBAR -->
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
   <!-- MAIN WRAPPER -->
   <div class="main-wrapper">
@@ -168,6 +174,14 @@
     <header class="topbar">
       <!-- Left: GEHU Banner & Campus Info -->
       <div class="topbar-left">
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button id="mobileMenuBtn" class="mobile-menu-btn" title="Open Navigation Menu" aria-label="Open Navigation Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
         <div class="gehu-logo-badge">
           <img src="assets/gehu_banner.png" alt="Graphic Era Hill University" class="gehu-banner-img">
         </div>
@@ -371,76 +385,78 @@
             <span class="attendance-badge-safe">✓ Overall: 91.78% (Safe)</span>
           </div>
 
-          <table class="attendance-table">
-            <thead>
-              <tr>
-                <th>CODE</th>
-                <th>COURSE / SUBJECT NAME</th>
-                <th>HELD</th>
-                <th>ATTENDED</th>
-                <th>PERCENTAGE</th>
-                <th>EXAM ELIGIBILITY</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="subj-code">PCS308</td>
-                <td class="subj-name">Logic Design and Computer Organization Lab</td>
-                <td>24</td>
-                <td>23</td>
-                <td class="pct-pill">95.83%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-              <tr>
-                <td class="subj-code">TCS307</td>
-                <td class="subj-name">Object Oriented Programming with C++</td>
-                <td>32</td>
-                <td>30</td>
-                <td class="pct-pill">93.75%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-              <tr>
-                <td class="subj-code">TCS368</td>
-                <td class="subj-name">Advanced Probability for AI</td>
-                <td>28</td>
-                <td>26</td>
-                <td class="pct-pill">92.86%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-              <tr>
-                <td class="subj-code">TCS349</td>
-                <td class="subj-name">Responsible and Explainable AI</td>
-                <td>26</td>
-                <td>24</td>
-                <td class="pct-pill">92.31%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-              <tr>
-                <td class="subj-code">TCS302</td>
-                <td class="subj-name">Data Structures with C++</td>
-                <td>34</td>
-                <td>31</td>
-                <td class="pct-pill">91.18%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-              <tr>
-                <td class="subj-code">PCS302</td>
-                <td class="subj-name">Data Structures Lab</td>
-                <td>20</td>
-                <td>18</td>
-                <td class="pct-pill">90.00%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-              <tr>
-                <td class="subj-code">XCS301</td>
-                <td class="subj-name">Career Skills - I</td>
-                <td>16</td>
-                <td>14</td>
-                <td class="pct-pill">87.50%</td>
-                <td><span class="status-tag status-scheduled">Eligible</span></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="attendance-table">
+              <thead>
+                <tr>
+                  <th>CODE</th>
+                  <th>COURSE / SUBJECT NAME</th>
+                  <th>HELD</th>
+                  <th>ATTENDED</th>
+                  <th>PERCENTAGE</th>
+                  <th>EXAM ELIGIBILITY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="subj-code">PCS308</td>
+                  <td class="subj-name">Logic Design and Computer Organization Lab</td>
+                  <td>24</td>
+                  <td>23</td>
+                  <td class="pct-pill">95.83%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td class="subj-code">TCS307</td>
+                  <td class="subj-name">Object Oriented Programming with C++</td>
+                  <td>32</td>
+                  <td>30</td>
+                  <td class="pct-pill">93.75%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td class="subj-code">TCS368</td>
+                  <td class="subj-name">Advanced Probability for AI</td>
+                  <td>28</td>
+                  <td>26</td>
+                  <td class="pct-pill">92.86%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td class="subj-code">TCS349</td>
+                  <td class="subj-name">Responsible and Explainable AI</td>
+                  <td>26</td>
+                  <td>24</td>
+                  <td class="pct-pill">92.31%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td class="subj-code">TCS302</td>
+                  <td class="subj-name">Data Structures with C++</td>
+                  <td>34</td>
+                  <td>31</td>
+                  <td class="pct-pill">91.18%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td class="subj-code">PCS302</td>
+                  <td class="subj-name">Data Structures Lab</td>
+                  <td>20</td>
+                  <td>18</td>
+                  <td class="pct-pill">90.00%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td class="subj-code">XCS301</td>
+                  <td class="subj-name">Career Skills - I</td>
+                  <td>16</td>
+                  <td>14</td>
+                  <td class="pct-pill">87.50%</td>
+                  <td><span class="status-tag status-scheduled">Eligible</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </section>
@@ -525,7 +541,7 @@
                 <span class="tile-value">25101288302</span>
               </div>
 
-              <div class="tile-box">
+              <div class="tile-box tile-span-2">
                 <span class="tile-label">EMAIL</span>
                 <span class="tile-value" title="vaibhavipandey2307@gmail.com">vaibhavipandey2307@gmail.com</span>
               </div>
@@ -655,54 +671,56 @@
               <span class="date-pill">Fri 16 Oct</span>
             </div>
 
-            <table class="custom-table">
-              <thead>
-                <tr>
-                  <th>TIME</th>
-                  <th>COURSE</th>
-                  <th>FACULTY</th>
-                  <th>STATUS</th>
-                  <th>NOTE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="time-cell">09:00 - 09:55</td>
-                  <td>Logic Design and Computer Organization Lab(PCS308)</td>
-                  <td>MOHIT PANT</td>
-                  <td><span class="status-tag status-scheduled">Scheduled</span></td>
-                  <td class="note-text">—</td>
-                </tr>
-                <tr>
-                  <td class="time-cell">09:55 - 10:50</td>
-                  <td>Logic Design and Computer Organization Lab(PCS308)</td>
-                  <td>MOHIT PANT</td>
-                  <td><span class="status-tag status-scheduled">Scheduled</span></td>
-                  <td class="note-text">—</td>
-                </tr>
-                <tr>
-                  <td class="time-cell">11:00 - 11:55</td>
-                  <td>Advanced Probability for AI(TCS368)</td>
-                  <td>Kalpana Chauhan</td>
-                  <td><span class="status-tag status-scheduled">Scheduled</span></td>
-                  <td class="note-text">—</td>
-                </tr>
-                <tr>
-                  <td class="time-cell">11:55 - 12:50</td>
-                  <td>Responsible and Explainable AI( TCS 349)</td>
-                  <td>Manoj Kaushik</td>
-                  <td><span class="status-tag status-substitution">Substitution</span></td>
-                  <td class="note-text">Lecture Substituted Advanced Probability for AI(TCS368), Deepali Chaudhary</td>
-                </tr>
-                <tr>
-                  <td class="time-cell">13:20 - 14:15</td>
-                  <td>Object Oriented Programming with C++ (TCS307)</td>
-                  <td>Soham Pandey</td>
-                  <td><span class="status-tag status-substitution">Substitution</span></td>
-                  <td class="note-text">Lecture Substituted Responsible and Explainable AI( TCS 349), Divyanshu Bhatt</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>TIME</th>
+                    <th>COURSE</th>
+                    <th>FACULTY</th>
+                    <th>STATUS</th>
+                    <th>NOTE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="time-cell">09:00 - 09:55</td>
+                    <td>Logic Design and Computer Organization Lab(PCS308)</td>
+                    <td>MOHIT PANT</td>
+                    <td><span class="status-tag status-scheduled">Scheduled</span></td>
+                    <td class="note-text">—</td>
+                  </tr>
+                  <tr>
+                    <td class="time-cell">09:55 - 10:50</td>
+                    <td>Logic Design and Computer Organization Lab(PCS308)</td>
+                    <td>MOHIT PANT</td>
+                    <td><span class="status-tag status-scheduled">Scheduled</span></td>
+                    <td class="note-text">—</td>
+                  </tr>
+                  <tr>
+                    <td class="time-cell">11:00 - 11:55</td>
+                    <td>Advanced Probability for AI(TCS368)</td>
+                    <td>Kalpana Chauhan</td>
+                    <td><span class="status-tag status-scheduled">Scheduled</span></td>
+                    <td class="note-text">—</td>
+                  </tr>
+                  <tr>
+                    <td class="time-cell">11:55 - 12:50</td>
+                    <td>Responsible and Explainable AI( TCS 349)</td>
+                    <td>Manoj Kaushik</td>
+                    <td><span class="status-tag status-substitution">Substitution</span></td>
+                    <td class="note-text">Lecture Substituted Advanced Probability for AI(TCS368), Deepali Chaudhary</td>
+                  </tr>
+                  <tr>
+                    <td class="time-cell">13:20 - 14:15</td>
+                    <td>Object Oriented Programming with C++ (TCS307)</td>
+                    <td>Soham Pandey</td>
+                    <td><span class="status-tag status-substitution">Substitution</span></td>
+                    <td class="note-text">Lecture Substituted Responsible and Explainable AI( TCS 349), Divyanshu Bhatt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <!-- Right: Course Progress -->

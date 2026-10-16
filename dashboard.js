@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Elements
   const sidebar = document.getElementById('sidebar');
   const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
   const themeBtns = document.querySelectorAll('.theme-btn');
   const navItems = document.querySelectorAll('.nav-item');
   const moduleSearch = document.getElementById('moduleSearch');
@@ -15,8 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const userProfileWrap = document.getElementById('userProfileWrap');
   const btnBackOverview = document.getElementById('btnBackOverview');
 
+  // Mobile Drawer helpers
+  function openMobileSidebar() {
+    if (sidebar) sidebar.classList.add('mobile-open');
+    if (sidebarOverlay) sidebarOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileSidebar() {
+    if (sidebar) sidebar.classList.remove('mobile-open');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   // Switch between Home View (default on login) and Dashboard View
   function showHomeView(pushHistory = true) {
+    closeMobileSidebar();
     if (homeView) homeView.style.display = 'flex';
     if (dashboardView) dashboardView.style.display = 'none';
     navItems.forEach(n => n.classList.remove('active'));
@@ -27,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showDashboardView(pushHistory = true) {
+    closeMobileSidebar();
     if (homeView) homeView.style.display = 'none';
     if (dashboardView) dashboardView.style.display = 'flex';
     navItems.forEach(n => n.classList.remove('active'));
@@ -84,7 +102,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Sidebar Toggle Collapse
+  // Mobile Drawer Toggle Button
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openMobileSidebar();
+    });
+  }
+
+  // Mobile Drawer Close Button
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileSidebar();
+    });
+  }
+
+  // Backdrop overlay click to close
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', () => {
+      closeMobileSidebar();
+    });
+  }
+
+  // Sidebar Toggle Collapse (Desktop)
   if (sidebarToggleBtn && sidebar) {
     sidebarToggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
@@ -119,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
+      closeMobileSidebar();
       if (item === navDashboard) return; // Handled separately
       navItems.forEach(n => n.classList.remove('active'));
       item.classList.add('active');
