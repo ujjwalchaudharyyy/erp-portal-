@@ -183,23 +183,49 @@ document.addEventListener('DOMContentLoaded', () => {
       const password = passwordInput ? passwordInput.value.trim() : '';
       const captchaEntered = captchaInput ? captchaInput.value.trim() : '';
 
-      // If empty, auto-fill default values
-      if (!userId && userIdInput) {
-        userIdInput.value = '25101288302';
-      }
-      if (!password && passwordInput) {
-        passwordInput.value = 'Vaishu@2307';
-      }
-      if (!captchaEntered && captchaInput) {
-        captchaInput.value = currentCaptcha;
+      // Check User ID
+      if (!userId) {
+        showToast('Please enter your User ID / Roll Number!', 'error');
+        if (userIdInput) userIdInput.focus();
+        return;
       }
 
-      const finalPassword = passwordInput ? passwordInput.value.trim() : '';
+      // Check Password
+      if (!password) {
+        showToast('Please enter your password!', 'error');
+        if (passwordInput) passwordInput.focus();
+        return;
+      }
 
-      // If user specifically entered an incorrect password, notify them
-      if (finalPassword && finalPassword !== 'Vaishu@2307' && finalPassword !== 'admin' && finalPassword !== 'password') {
-        showToast('Invalid password! Password is: Vaishu@2307', 'error');
-        passwordInput.focus();
+      // Check CAPTCHA
+      if (!captchaEntered) {
+        showToast('Please enter the CAPTCHA code!', 'error');
+        if (captchaInput) captchaInput.focus();
+        return;
+      }
+
+      // Validate CAPTCHA (case-insensitive)
+      if (captchaEntered.toLowerCase() !== currentCaptcha.toLowerCase()) {
+        showToast('Invalid CAPTCHA code! Please try again.', 'error');
+        renderCaptcha();
+        if (captchaInput) {
+          captchaInput.value = '';
+          captchaInput.focus();
+        }
+        return;
+      }
+
+      // Validate Password (without ever revealing password on failure)
+      if (password !== 'Vaishu@2307' && password !== 'admin' && password !== 'password') {
+        showToast('Invalid User ID or Password! Please try again.', 'error');
+        if (passwordInput) {
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+        renderCaptcha();
+        if (captchaInput) {
+          captchaInput.value = '';
+        }
         return;
       }
 
