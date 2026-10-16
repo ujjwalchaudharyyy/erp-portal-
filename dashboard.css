@@ -1210,6 +1210,23 @@ body {
   border-radius: 14px;
 }
 
+.btn-open-timetable-link {
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-open-timetable-link:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
 .custom-table {
   width: 100%;
   border-collapse: collapse;
@@ -1360,6 +1377,689 @@ body {
 
 .tile-span-2 {
   grid-column: span 1;
+}
+
+/* ========================================= */
+/* SECTION 3: CLASS TIME TABLE (OFFICIAL)     */
+/* ========================================= */
+
+.timetable-header-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 18px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.timetable-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timetable-cal-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+.timetable-cal-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.timetable-title-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timetable-main-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.timetable-sub-info {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.timetable-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--bg-card-border);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.day-active-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.time-active-pill {
+  font-size: 12px;
+  font-weight: 700;
+  color: #93c5fd;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 8px;
+}
+
+/* 3 STATS CARDS */
+.timetable-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.tt-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.tt-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tt-stat-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-cal {
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.icon-play {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.icon-clock {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.tt-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tt-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.8px;
+}
+
+.tt-stat-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.val-muted {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.val-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* SLIDING GUIDE HINT */
+.table-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px dashed rgba(59, 130, 246, 0.35);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #93c5fd;
+}
+
+/* TIMETABLE SLIDING WRAPPER (STICKY DAY COLUMN) */
+.timetable-sliding-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.timetable-sliding-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timetable-sliding-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.timetable-sliding-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: 6px;
+}
+
+.official-timetable {
+  width: 100%;
+  min-width: 1080px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12.5px;
+}
+
+.official-timetable th {
+  background: #0d1527;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--bg-card-border);
+  white-space: nowrap;
+}
+
+.official-timetable td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: top;
+  min-width: 170px;
+}
+
+/* STICKY DAY COLUMN */
+.col-sticky-day {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background-color: #0b1120 !important;
+  width: 130px;
+  min-width: 130px;
+  max-width: 130px;
+  border-right: 2px solid rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.35);
+}
+
+th.col-sticky-day {
+  background-color: #080d1a !important;
+  color: #93c5fd !important;
+  font-weight: 800;
+}
+
+.day-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e2e8f0;
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+/* ACTIVE FRIDAY HIGHLIGHT (MATCHES SCREENSHOTS 1 & 2) */
+.row-active-day {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.row-active-day td {
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.day-highlight {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), 4px 0 12px rgba(99, 102, 241, 0.4);
+}
+
+.tt-course-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tt-course-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.tt-faculty-name {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* SUBSTITUTION BADGE (MATCHES SCREENSHOT 1 & 2) */
+.tt-sub-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: #fca5a5;
+  margin-top: 4px;
+}
+
+.sub-accent-bar {
+  width: 3px;
+  height: 12px;
+  background: #ef4444;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cell-empty {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/* ========================================= */
+/* SECTION 4: OFFICIAL FEE SECTION STYLES   */
+/* ========================================= */
+
+.fee-page-wrapper {
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* STUDENT PROFILE CARD (MATCHES SCREENSHOT 3) */
+.fee-student-card {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fee-student-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.fee-avatar-box {
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  box-shadow: 0 8px 16px rgba(2, 132, 199, 0.35);
+  flex-shrink: 0;
+}
+
+.fee-student-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fee-student-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+.fee-student-sub {
+  font-size: 12.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.fee-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fee-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+}
+
+.fee-field-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.fee-field-val {
+  color: #0f172a;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* FEE SUMMARY CARD (MATCHES SCREENSHOT 3) */
+.fee-summary-card {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 24px;
+  padding: 24px 26px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fee-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fee-summary-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.fee-program-pill {
+  background: #ffedd5;
+  color: #c2410c;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 14px;
+  letter-spacing: 0.8px;
+}
+
+/* INNER PENDING BOX */
+.fee-pending-box {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.fee-pending-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #b45309;
+}
+
+.fee-pending-amount {
+  font-size: 38px;
+  font-weight: 800;
+  color: #b45309;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.fee-last-date {
+  font-size: 13px;
+  color: #92400e;
+  margin-bottom: 6px;
+}
+
+.btn-pay-now {
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+  transition: all 0.2s;
+}
+
+.btn-pay-now:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+}
+
+/* FINANCIAL BREAKDOWN LIST */
+.fee-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.fee-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.fee-bd-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.fee-bd-val {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+/* RECEIPTS & PAYMENT HISTORY */
+.fee-receipts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fee-receipts-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 4px;
+}
+
+.fee-receipt-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.receipt-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.receipt-badge-paid {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.receipt-sem-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.receipt-date {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.receipt-item-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.receipt-amount {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.btn-receipt-download {
+  background: #e2e8f0;
+  border: none;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-receipt-download:hover {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+/* THEME SUPPORT FOR TIMETABLE & FEE */
+[data-theme="dark"] .fee-student-card,
+[data-theme="dark"] .fee-summary-card {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--bg-card-border);
+}
+
+[data-theme="dark"] .fee-student-name,
+[data-theme="dark"] .fee-summary-title,
+[data-theme="dark"] .fee-field-val,
+[data-theme="dark"] .fee-bd-val,
+[data-theme="dark"] .fee-receipts-title,
+[data-theme="dark"] .receipt-sem-name,
+[data-theme="dark"] .receipt-amount {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .fee-student-header,
+[data-theme="dark"] .fee-breakdown-list {
+  border-bottom: 1px solid var(--bg-card-border);
+}
+
+[data-theme="dark"] .fee-pending-box {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+[data-theme="dark"] .fee-receipt-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--bg-card-border);
+}
+
+[data-theme="dark"] .btn-receipt-download {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+[data-theme="light"] .col-sticky-day {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] th.col-sticky-day {
+  background-color: #e2e8f0 !important;
+  color: #1e3a8a !important;
+}
+
+[data-theme="light"] .day-name {
+  color: #0f172a;
+}
+
+[data-theme="light"] .official-timetable th {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+[data-theme="light"] .tt-course-name {
+  color: #0f172a;
+}
+
+[data-theme="light"] .timetable-main-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .tt-stat-val {
+  color: #0f172a;
 }
 
 /* ========================================================= */
@@ -1744,5 +2444,74 @@ body {
   .course-bar-wrap {
     width: calc(100% - 44px);
   }
+
+  /* TIMETABLE MOBILE */
+  .timetable-header-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 14px;
+  }
+  .timetable-main-title {
+    font-size: 18px;
+  }
+  .timetable-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .tt-stat-card {
+    padding: 14px;
+  }
+  .table-scroll-hint {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  .official-timetable th {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .official-timetable td {
+    padding: 12px;
+  }
+  .col-sticky-day {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  /* FEE MOBILE */
+  .fee-student-card,
+  .fee-summary-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+  .fee-avatar-box {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 14px;
+  }
+  .fee-student-name {
+    font-size: 17px;
+  }
+  .fee-field-row {
+    font-size: 12.5px;
+  }
+  .fee-pending-amount {
+    font-size: 32px;
+  }
+  .fee-breakdown-row {
+    font-size: 13.5px;
+  }
+  .fee-receipt-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .receipt-item-right {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
+
 

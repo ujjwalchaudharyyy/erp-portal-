@@ -12,11 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // View Containers
   const homeView = document.getElementById('homeView');
   const dashboardView = document.getElementById('dashboardView');
+  const timetableView = document.getElementById('timetableView');
+  const feeView = document.getElementById('feeView');
   const homeBtn = document.getElementById('homeBtn');
   const navDashboard = document.getElementById('navDashboard');
+  const navTimetable = document.getElementById('navTimetable');
+  const navFee = document.getElementById('navFee');
   const brandLogoLink = document.getElementById('brandLogoLink');
   const userProfileWrap = document.getElementById('userProfileWrap');
   const btnBackOverview = document.getElementById('btnBackOverview');
+  const backToHomeBtns = document.querySelectorAll('.btn-back-to-home');
+  const homeFeeCard = document.getElementById('homeFeeCard');
 
   // Mobile Drawer helpers
   function openMobileSidebar() {
@@ -31,13 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Switch between Home View (default on login) and Dashboard View
+  function hideAllViews() {
+    if (homeView) homeView.style.display = 'none';
+    if (dashboardView) dashboardView.style.display = 'none';
+    if (timetableView) timetableView.style.display = 'none';
+    if (feeView) feeView.style.display = 'none';
+    navItems.forEach(n => n.classList.remove('active'));
+  }
+
+  // Switch Views
   function showHomeView(pushHistory = true) {
     closeMobileSidebar();
+    hideAllViews();
     if (homeView) homeView.style.display = 'flex';
-    if (dashboardView) dashboardView.style.display = 'none';
-    navItems.forEach(n => n.classList.remove('active'));
-    if (pushHistory && window.location.hash === '#dashboard') {
+    if (pushHistory && window.location.hash) {
       history.pushState({ view: 'home' }, '', window.location.pathname);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -45,9 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showDashboardView(pushHistory = true) {
     closeMobileSidebar();
-    if (homeView) homeView.style.display = 'none';
+    hideAllViews();
     if (dashboardView) dashboardView.style.display = 'flex';
-    navItems.forEach(n => n.classList.remove('active'));
     if (navDashboard) navDashboard.classList.add('active');
     if (pushHistory) {
       history.pushState({ view: 'dashboard' }, '', '#dashboard');
@@ -55,10 +67,37 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function showTimetableView(pushHistory = true) {
+    closeMobileSidebar();
+    hideAllViews();
+    if (timetableView) timetableView.style.display = 'flex';
+    if (navTimetable) navTimetable.classList.add('active');
+    if (pushHistory) {
+      history.pushState({ view: 'timetable' }, '', '#timetable');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showFeeView(pushHistory = true) {
+    closeMobileSidebar();
+    hideAllViews();
+    if (feeView) feeView.style.display = 'flex';
+    if (navFee) navFee.classList.add('active');
+    if (pushHistory) {
+      history.pushState({ view: 'fee' }, '', '#fee');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   // Handle browser back button (popstate)
   window.addEventListener('popstate', (e) => {
-    if (e.state && e.state.view === 'dashboard') {
+    const view = (e.state && e.state.view) || (window.location.hash.replace('#', ''));
+    if (view === 'dashboard') {
       showDashboardView(false);
+    } else if (view === 'timetable') {
+      showTimetableView(false);
+    } else if (view === 'fee') {
+      showFeeView(false);
     } else {
       showHomeView(false);
     }
@@ -87,11 +126,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Dashboard Nav Click (Sidebar menu)
+  // Dashboard Nav Click
   if (navDashboard) {
     navDashboard.addEventListener('click', (e) => {
       e.preventDefault();
       showDashboardView(true);
+    });
+  }
+
+  // Time Table Nav Click
+  if (navTimetable) {
+    navTimetable.addEventListener('click', (e) => {
+      e.preventDefault();
+      showTimetableView(true);
+    });
+  }
+
+  // Fee Nav Click
+  if (navFee) {
+    navFee.addEventListener('click', (e) => {
+      e.preventDefault();
+      showFeeView(true);
+    });
+  }
+
+  // All 'Back to Main Overview' buttons
+  backToHomeBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showHomeView(true);
+    });
+  });
+
+  // Home Fee Card Click
+  if (homeFeeCard) {
+    homeFeeCard.addEventListener('click', (e) => {
+      e.preventDefault();
+      showFeeView(true);
+    });
+  }
+
+  // Home Timetable Panel Full Schedule button
+  const btnOpenFullTimetable = document.getElementById('btnOpenFullTimetable');
+  if (btnOpenFullTimetable) {
+    btnOpenFullTimetable.addEventListener('click', (e) => {
+      e.preventDefault();
+      showTimetableView(true);
     });
   }
 
@@ -159,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Other Navigation items click
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
+      if (item === navDashboard || item === navTimetable || item === navFee) return; // Handled separately
       e.preventDefault();
       closeMobileSidebar();
-      if (item === navDashboard) return; // Handled separately
       navItems.forEach(n => n.classList.remove('active'));
       item.classList.add('active');
     });
@@ -185,6 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check initial URL hash
   if (window.location.hash === '#dashboard') {
     showDashboardView(false);
+  } else if (window.location.hash === '#timetable') {
+    showTimetableView(false);
+  } else if (window.location.hash === '#fee') {
+    showFeeView(false);
   } else {
     showHomeView(false);
   }

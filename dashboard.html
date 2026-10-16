@@ -55,7 +55,7 @@
       </a>
 
       <!-- Fee -->
-      <a class="nav-item" data-tab="fee">
+      <a class="nav-item" id="navFee" data-tab="fee">
         <div class="nav-item-left">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
@@ -67,7 +67,7 @@
       </a>
 
       <!-- Time Table -->
-      <a class="nav-item" data-tab="timetable">
+      <a class="nav-item" id="navTimetable" data-tab="timetable">
         <div class="nav-item-left">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
@@ -352,7 +352,7 @@
           </div>
 
           <!-- Total Fee Balance Card -->
-          <div class="metric-card">
+          <div class="metric-card" id="homeFeeCard" style="cursor: pointer;" title="Click to view detailed Fee Summary">
             <div class="corner-decor corner-mint"></div>
             <div class="metric-header">
               <div class="metric-icon-wrap metric-icon-blue">
@@ -668,7 +668,10 @@
           <div class="timetable-panel">
             <div class="panel-header-row">
               <h3 class="panel-title">Today's Time Table & Class Substitution</h3>
-              <span class="date-pill">Fri 16 Oct</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="date-pill">Fri 16 Oct</span>
+                <button id="btnOpenFullTimetable" class="btn-open-timetable-link" title="Open Full Weekly Time Table">Full Schedule ↗</button>
+              </div>
             </div>
 
             <div class="table-responsive">
@@ -797,6 +800,432 @@
               </div>
 
             </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SECTION 3: CLASS TIME TABLE (OFFICIAL SLIDING VIEW)      -->
+      <!-- ======================================================== -->
+      <section id="timetableView" class="view-section" style="display: none;">
+        
+        <!-- Back to Overview Button Row -->
+        <div class="back-bar-row">
+          <button class="btn-back-overview btn-back-to-home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Main Overview</span>
+          </button>
+        </div>
+
+        <!-- Official Header Card (Matches Screenshots 1 & 2) -->
+        <div class="timetable-header-card">
+          <div class="timetable-header-left">
+            <div class="timetable-cal-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="timetable-title-meta">
+              <h1 class="timetable-main-title">Class Time Table</h1>
+              <p class="timetable-sub-info">College : GEHU-BTL/Course : BACHELOR OF TECHNOLOGY/Year-Sem : 3/Branch : B.Tech (CSE)/Section : F</p>
+            </div>
+          </div>
+          <div class="timetable-header-right">
+            <span class="day-active-pill"><span class="live-dot"></span> Friday</span>
+            <span class="time-active-pill">11:20 PM</span>
+          </div>
+        </div>
+
+        <!-- 3 Summary Mini Cards (Matches Screenshots 1 & 2) -->
+        <div class="timetable-summary-grid">
+          
+          <div class="tt-stat-card">
+            <div class="tt-stat-icon icon-cal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <div class="tt-stat-info">
+              <span class="tt-stat-label">CLASSES TODAY</span>
+              <span class="tt-stat-val">6 classes</span>
+            </div>
+          </div>
+
+          <div class="tt-stat-card">
+            <div class="tt-stat-icon icon-play">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            </div>
+            <div class="tt-stat-info">
+              <span class="tt-stat-label">RIGHT NOW</span>
+              <span class="tt-stat-val val-muted">No class in session</span>
+            </div>
+          </div>
+
+          <div class="tt-stat-card">
+            <div class="tt-stat-icon icon-clock">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div class="tt-stat-info">
+              <span class="tt-stat-label">UP NEXT</span>
+              <span class="tt-stat-val val-truncate" title="Logic Design and Computer Organization Lab(PCS308)">Logic Design and Computer Organization Lab(PC...</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sliding Guide / Swipe Hint Banner -->
+        <div class="table-scroll-hint">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Slide easily horizontally to view all periods (P1 to P7) • "Day" column stays fixed</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+        <!-- Sliding Timetable Table Container with STICKY Left Day Column -->
+        <div class="timetable-sliding-wrapper">
+          <table class="official-timetable">
+            <thead>
+              <tr>
+                <th class="col-sticky-day">Day</th>
+                <th>(P1) 09:00-09:55</th>
+                <th>(P2) 09:55-10:50</th>
+                <th>(P3) 11:00-11:55</th>
+                <th>(P4) 11:55-12:50</th>
+                <th>(P5) 13:20-14:15</th>
+                <th>(P6) 14:15-15:10</th>
+                <th>(P7) 15:10-16:05</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Monday -->
+              <tr>
+                <td class="col-sticky-day day-name">Monday</td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Advanced Probability for AI(TCS368)</div>
+                    <div class="tt-faculty-name">Kalpana Chauhan</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">UHV -II(UHV301)</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Object Oriented Programming with C++ (TCS307)</div>
+                    <div class="tt-faculty-name">Senam Pandey</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Logic Design and Computer Organization(TCS308)</div>
+                    <div class="tt-faculty-name">MOHIT PANT</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">OOPS with C++ Lab(PCS307)</div>
+                    <div class="tt-faculty-name">KumKum Upreti</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">OOPS with C++ Lab(PCS307)</div>
+                    <div class="tt-faculty-name">KumKum Upreti</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Data Structures with C(TCS302)</div>
+                    <div class="tt-faculty-name">Suraj Chaunal</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Tuesday -->
+              <tr>
+                <td class="col-sticky-day day-name">Tuesday</td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Data Structures Lab(PCS302)</div>
+                    <div class="tt-faculty-name">Ansh Dhingra</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Data Structures Lab(PCS302)</div>
+                    <div class="tt-faculty-name">Ansh Dhingra</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Object Oriented Programming with C++ (TCS307)</div>
+                    <div class="tt-faculty-name">Senam Pandey</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Career Skills -I(XCS301)</div>
+                    <div class="tt-faculty-name">Prof (Dr.) Shweta Arora</div>
+                  </div>
+                </td>
+                <td class="cell-empty"></td>
+                <td class="cell-empty"></td>
+                <td class="cell-empty"></td>
+              </tr>
+
+              <!-- Wednesday -->
+              <tr>
+                <td class="col-sticky-day day-name">Wednesday</td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Responsible and Explainable AI( TCS 349)</div>
+                    <div class="tt-faculty-name">Manoj Kaushik</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Logic Design and Computer Organization(TCS308)</div>
+                    <div class="tt-faculty-name">MOHIT PANT</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Data Structures with C(TCS302)</div>
+                    <div class="tt-faculty-name">Suraj Chaunal</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Career Skills -I(XCS301)</div>
+                    <div class="tt-faculty-name">NARENDRA BISHT</div>
+                  </div>
+                </td>
+                <td class="cell-empty"></td>
+                <td class="cell-empty"></td>
+                <td class="cell-empty"></td>
+              </tr>
+
+              <!-- Thursday -->
+              <tr>
+                <td class="col-sticky-day day-name">Thursday</td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Logic Design and Computer Organization(TCS308)</div>
+                    <div class="tt-faculty-name">MOHIT PANT</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Responsible and Explainable AI( TCS 349)</div>
+                    <div class="tt-faculty-name">Manoj Kaushik</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Advanced Probability for AI(TCS368)</div>
+                    <div class="tt-faculty-name">Kalpana Chauhan</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">UHV -II(UHV301)</div>
+                  </div>
+                </td>
+                <td class="cell-empty"></td>
+                <td class="cell-empty"></td>
+                <td class="cell-empty"></td>
+              </tr>
+
+              <!-- Friday (Active Day with highlight) -->
+              <tr class="row-active-day">
+                <td class="col-sticky-day day-name day-highlight">Friday</td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Logic Design and Computer Organization Lab(PCS308)</div>
+                    <div class="tt-faculty-name">MOHIT PANT</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Logic Design and Computer Organization Lab(PCS308)</div>
+                    <div class="tt-faculty-name">MOHIT PANT</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Advanced Probability for AI(TCS368)</div>
+                    <div class="tt-faculty-name">Kalpana Chauhan</div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Responsible and Explainable AI( TCS 349)</div>
+                    <div class="tt-faculty-name">Manoj Kaushik</div>
+                    <div class="tt-sub-badge">
+                      <span class="sub-accent-bar"></span>
+                      <span>Substituted: Advanced Probability for AI(TCS368), Deepali Chaudhary</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Object Oriented Programming with C++ (TCS307)</div>
+                    <div class="tt-faculty-name">Senam Pandey</div>
+                    <div class="tt-sub-badge">
+                      <span class="sub-accent-bar"></span>
+                      <span>Substituted: Responsible and Explainable AI( TCS 349), Divyanshu Bhatt</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tt-course-cell">
+                    <div class="tt-course-name">Data Structures with C(TCS302)</div>
+                    <div class="tt-faculty-name">Suraj Chaunal</div>
+                  </div>
+                </td>
+                <td class="cell-empty"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- SECTION 4: STUDENT FEE PORTAL (OFFICIAL GEHU FEE VIEW)   -->
+      <!-- ======================================================== -->
+      <section id="feeView" class="view-section" style="display: none;">
+        
+        <!-- Back to Overview Button Row -->
+        <div class="back-bar-row">
+          <button class="btn-back-overview btn-back-to-home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back to Main Overview</span>
+          </button>
+        </div>
+
+        <div class="fee-page-wrapper">
+          
+          <!-- Top Card: Student Profile Card (Matches Screenshot 3) -->
+          <div class="fee-student-card">
+            <div class="fee-student-header">
+              <div class="fee-avatar-box">
+                <span>VP</span>
+              </div>
+              <div class="fee-student-main">
+                <h2 class="fee-student-name">VAIBHAVI PANDEY</h2>
+                <div class="fee-student-sub">BACHELOR OF TECHNOLOGY • Sem 3</div>
+              </div>
+            </div>
+
+            <div class="fee-details-list">
+              <div class="fee-field-row">
+                <span class="fee-field-label">University</span>
+                <span class="fee-field-val">Graphic Era Hill University</span>
+              </div>
+              <div class="fee-field-row">
+                <span class="fee-field-label">College</span>
+                <span class="fee-field-val">GEHU-Bhimtal Campus</span>
+              </div>
+              <div class="fee-field-row">
+                <span class="fee-field-label">University Roll No.</span>
+                <span class="fee-field-val">2561424</span>
+              </div>
+              <div class="fee-field-row">
+                <span class="fee-field-label">Section</span>
+                <span class="fee-field-val">F</span>
+              </div>
+              <div class="fee-field-row">
+                <span class="fee-field-label">Mentor</span>
+                <span class="fee-field-val">Govind Singh Jethi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lower Card: Fee Summary (Matches Screenshot 3) -->
+          <div class="fee-summary-card">
+            
+            <div class="fee-summary-header">
+              <h3 class="fee-summary-title">Fee Summary</h3>
+              <span class="fee-program-pill">PROGRAM FEE</span>
+            </div>
+
+            <!-- Inner Pending Box (Matches Screenshot 3) -->
+            <div class="fee-pending-box">
+              <div class="fee-pending-title">Pending Amount</div>
+              <div class="fee-pending-amount">₹0</div>
+              <div class="fee-last-date">Last date: —</div>
+              <button class="btn-pay-now" onclick="alert('No pending fees! All semester fees are fully cleared.')">Pay Now</button>
+            </div>
+
+            <!-- Financial Breakdown Rows (Matches Screenshot 3) -->
+            <div class="fee-breakdown-list">
+              <div class="fee-breakdown-row">
+                <span class="fee-bd-label">Total Fee</span>
+                <span class="fee-bd-val">₹2,83,000</span>
+              </div>
+              <div class="fee-breakdown-row">
+                <span class="fee-bd-label">Paid</span>
+                <span class="fee-bd-val">₹1,80,412</span>
+              </div>
+              <div class="fee-breakdown-row">
+                <span class="fee-bd-label">Scholarship</span>
+                <span class="fee-bd-val">₹1,02,588</span>
+              </div>
+            </div>
+
+            <!-- Payment Clearance History -->
+            <div class="fee-receipts-section">
+              <h4 class="fee-receipts-title">Payment & Clearance History</h4>
+              
+              <div class="fee-receipt-item">
+                <div class="receipt-item-left">
+                  <div class="receipt-badge-paid">PAID</div>
+                  <div>
+                    <div class="receipt-sem-name">Semester 1 Fee (Paid Online)</div>
+                    <div class="receipt-date">Txn ID: GEHU2025091402 • 14 Aug 2025</div>
+                  </div>
+                </div>
+                <div class="receipt-item-right">
+                  <div class="receipt-amount">₹94,337</div>
+                  <button class="btn-receipt-download" onclick="alert('Receipt downloaded for Semester 1 Fee (₹94,337)')">Receipt 📥</button>
+                </div>
+              </div>
+
+              <div class="fee-receipt-item">
+                <div class="receipt-item-left">
+                  <div class="receipt-badge-paid">PAID</div>
+                  <div>
+                    <div class="receipt-sem-name">Semester 2 Fee (Paid Online)</div>
+                    <div class="receipt-date">Txn ID: GEHU2026011988 • 19 Jan 2026</div>
+                  </div>
+                </div>
+                <div class="receipt-item-right">
+                  <div class="receipt-amount">₹86,075</div>
+                  <button class="btn-receipt-download" onclick="alert('Receipt downloaded for Semester 2 Fee (₹86,075)')">Receipt 📥</button>
+                </div>
+              </div>
+
+              <div class="fee-receipt-item">
+                <div class="receipt-item-left">
+                  <div class="receipt-badge-paid" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">SCHOLARSHIP</div>
+                  <div>
+                    <div class="receipt-sem-name">Academic Merit Scholarship Adjustment</div>
+                    <div class="receipt-date">Auto-Credited for 2026-27 Session</div>
+                  </div>
+                </div>
+                <div class="receipt-item-right">
+                  <div class="receipt-amount" style="color: #c084fc;">₹1,02,588</div>
+                  <button class="btn-receipt-download" onclick="alert('Scholarship Certificate downloaded (₹1,02,588)')">Letter 📜</button>
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
