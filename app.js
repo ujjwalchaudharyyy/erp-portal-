@@ -287,5 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
         : "url('assets/campus_bg.jpg')";
       bgToggleBtn.textContent = isClean ? 'Switch: Reference BG' : 'Switch: Clean BG';
     });
+  // Auto-update copyright year
+  const copyrightYear = document.querySelector('.copyright-text');
+  if (copyrightYear) {
+    copyrightYear.innerHTML = `&copy; ${new Date().getFullYear()} Cyborg IT Services Pvt. Ltd. All rights reserved.`;
   }
 });

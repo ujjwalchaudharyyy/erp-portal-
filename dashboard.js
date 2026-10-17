@@ -375,6 +375,91 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================
+  // DYNAMIC LIVE DATE & TIME AUTO-UPDATER
+  // =========================================================
+  function updateLiveDateTime() {
+    const now = new Date();
+    
+    const daysShortUpper = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const daysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthsShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    const dayOfWeek = now.getDay();
+    const dayDate = now.getDate();
+    const monthIndex = now.getMonth();
+    const fullYear = now.getFullYear();
+    
+    // 1. Topbar Date (e.g., "SAT 17 Oct, 2026")
+    const topbarDateEl = document.getElementById('topbarCurrentDate') || document.querySelector('.current-date');
+    if (topbarDateEl) {
+      topbarDateEl.textContent = `${daysShortUpper[dayOfWeek]} ${dayDate} ${monthsShort[monthIndex]}, ${fullYear}`;
+    }
+
+    // 2. Timetable Panel Date Pill on Home Overview (e.g., "Sat 17 Oct")
+    const homeDatePillEl = document.getElementById('homeTimetableDatePill') || document.querySelector('.date-pill');
+    if (homeDatePillEl) {
+      homeDatePillEl.textContent = `${daysShort[dayOfWeek]} ${dayDate} ${monthsShort[monthIndex]}`;
+    }
+
+    // 3. Timetable Live Day & Time Pills (Official Timetable View)
+    const ttLiveDayPill = document.getElementById('ttLiveDayPill') || document.querySelector('.day-active-pill');
+    if (ttLiveDayPill) {
+      ttLiveDayPill.innerHTML = `<span class="live-dot"></span> ${daysFull[dayOfWeek]}`;
+    }
+
+    const ttLiveTimePill = document.getElementById('ttLiveTimePill') || document.querySelector('.time-active-pill');
+    if (ttLiveTimePill) {
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      ttLiveTimePill.textContent = `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+    }
+
+    // 4. Session Badge Auto-Calculation (e.g. SESSION 2026-27)
+    const sessionBadgeText = document.getElementById('sessionBadgeText');
+    if (sessionBadgeText) {
+      const startYear = monthIndex >= 6 ? fullYear : fullYear - 1;
+      const endYearShort = String((startYear + 1) % 100).padStart(2, '0');
+      sessionBadgeText.innerHTML = `SESSION <strong>${startYear}-${endYearShort}</strong>`;
+    }
+
+    // 5. Highlight today's row in weekly timetable
+    const currentDayName = daysFull[dayOfWeek];
+    const timetableRows = document.querySelectorAll('.official-timetable tbody tr');
+    let matchedDay = false;
+    timetableRows.forEach(row => {
+      const dayCell = row.querySelector('.col-sticky-day.day-name');
+      if (dayCell) {
+        const cellDay = dayCell.textContent.trim();
+        if (cellDay.toLowerCase() === currentDayName.toLowerCase()) {
+          row.classList.add('row-active-day');
+          dayCell.classList.add('day-highlight');
+          matchedDay = true;
+        } else {
+          row.classList.remove('row-active-day');
+          dayCell.classList.remove('day-highlight');
+        }
+      }
+    });
+
+    // If weekend (Sunday or Saturday), highlight Friday as latest class reference
+    if (!matchedDay && timetableRows.length > 0) {
+      const fridayRow = Array.from(timetableRows).find(r => r.querySelector('.day-name')?.textContent.includes('Friday'));
+      if (fridayRow) {
+        fridayRow.classList.add('row-active-day');
+        fridayRow.querySelector('.day-name')?.classList.add('day-highlight');
+      }
+    }
+  }
+
+  // Initial update and live auto-updater every 1 second
+  updateLiveDateTime();
+  setInterval(updateLiveDateTime, 1000);
+
   // Check initial URL hash
   if (window.location.hash === '#dashboard' || window.location.hash === '#academic') {
     showDashboardView(false);
