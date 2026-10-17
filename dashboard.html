@@ -625,15 +625,15 @@
           </div>
 
           <!-- Card 6: Carry Papers -->
-          <div class="metric-mini-card" id="homeCarryCard" style="cursor: pointer;" title="Click to view Exam & Back Papers">
+          <div class="metric-mini-card" id="homeCarryCard" style="cursor: pointer;" title="Click to view Exam & Result Summary">
             <div>
-              <div class="metric-mini-icon icon-red" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              <div class="metric-mini-icon icon-green" style="background: rgba(34, 197, 94, 0.15); color: #4ade80;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               <div class="metric-mini-title">Carry Papers</div>
-              <div class="metric-mini-val" style="color: #f87171;">1</div>
+              <div class="metric-mini-val" style="color: #4ade80;">0</div>
             </div>
-            <div class="metric-mini-sub" style="color: #fca5a5;">1 back paper in Sem 2 (AI - 7.78 SGPA)</div>
+            <div class="metric-mini-sub" style="color: #86efac;">All Clear • No active back papers</div>
           </div>
 
         </div>
@@ -1332,13 +1332,13 @@
             </div>
           </div>
 
-          <!-- Card 3: Total Back Paper(s) (1 Back as requested) -->
+          <!-- Card 3: Total Back Paper(s) (All Clear) -->
           <div class="exam-stat-card">
-            <div class="exam-stat-icon-wrap icon-wrap-back">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <div class="exam-stat-icon-wrap icon-wrap-clear">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="16 10 11 15 8 12"></polyline></svg>
             </div>
             <div class="exam-stat-details">
-              <div class="exam-stat-val val-has-back">1</div>
+              <div class="exam-stat-val val-clear">0</div>
               <div class="exam-stat-label">Total Back Paper(s)</div>
             </div>
           </div>
@@ -1418,19 +1418,16 @@
                   <td><button class="btn-exam-action btn-exam-applied" onclick="alert('Status: No back papers in Semester 1!')">Back Applied</button></td>
                 </tr>
 
-                <!-- Row 2: Semester 2 (7.78 SGPA, 1 Back Paper in AI as requested) -->
-                <tr class="row-highlight-back">
+                <!-- Row 2: Semester 2 (7.78 SGPA, No Backs - All Clear) -->
+                <tr>
                   <td class="text-center">2</td>
                   <td class="text-center font-bold">2</td>
                   <td class="text-highlight-sgpa">7.78</td>
-                  <td>
-                    <span class="badge-one-back">1 Back Paper</span>
-                    <div style="font-size: 11px; color: #dc2626; font-weight: 600; margin-top: 3px;">Subject: AI</div>
-                  </td>
-                  <td><span class="badge-pass-back">Promoted with 1 Back</span></td>
-                  <td><button class="btn-exam-action" onclick="alert('Grade Card for Semester 2 (SGPA: 7.78)\nBack Paper: Artificial Intelligence (AI)')">View</button></td>
-                  <td><button class="btn-exam-action" onclick="alert('Marksheet Detail for Semester 2 (SGPA: 7.78) downloaded!\nBack Paper Subject: Artificial Intelligence (AI)')">View Detail</button></td>
-                  <td><button class="btn-exam-action btn-apply-active" onclick="alert('Back Paper Examination form opened for Artificial Intelligence (AI) - Semester 2.\nApplication Fee: ₹1,500')">Back Applied</button></td>
+                  <td><span class="badge-no-backs">No Backs</span></td>
+                  <td><span class="badge-pass-clean">Pass With First Attempt</span></td>
+                  <td><button class="btn-exam-action" onclick="alert('Grade Card for Semester 2 (SGPA: 7.78) - All subjects passed successfully!')">View</button></td>
+                  <td><button class="btn-exam-action" onclick="alert('Marksheet Detail for Semester 2 downloaded!')">View Detail</button></td>
+                  <td><button class="btn-exam-action btn-exam-applied" onclick="alert('Status: No back papers in Semester 2!')">Back Applied</button></td>
                 </tr>
               </tbody>
             </table>
